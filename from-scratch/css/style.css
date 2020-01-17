@@ -1,0 +1,70 @@
+body {
+	color: white;
+}
+
+.filesView {
+	min-height: 100vh;
+}
+
+.leftFiles {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border: 1px solid gray;
+}
+
+.rightFiles {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border: 1px solid gray;
+}
+
+.directory .root li,
+.directory .root > ul ul {
+	padding: 1px 0 1px 30px;
+	margin: 1px 0;
+	/*	background: black;*/
+}
+/*
+
+.root .files :hover,
+.root .folder:hover {
+	cursor: pointer;
+	background: grey;
+}
+*/
+.used{
+	color: green;
+}
+.unused{
+	color:red;
+}
+.files:hover {
+	cursor: pointer;
+	background: lightgray;
+}
+
+.files:hover .folder {
+	background-color: white;
+	font-weight: normal;
+}
+
+.directory {
+	align-self: flex-start;
+	width: 100%;
+	max-height: 500px;
+	overflow-y: scroll;
+	background: whitesmoke;
+	color: black;
+}
+
+.directory .files {
+	/*	background: aqua;*/
+}
+
+.directory .folder {
+	/*	background: black;*/
+}

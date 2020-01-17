@@ -1,0 +1,53 @@
+.sideNav {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	transition: width 0.5s;
+	-webkit-transition: width 0.5s;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	width: 0;
+	height: 100%;
+	overflow-x: hidden;
+	border-right: 1px solid white;
+}
+
+.sideNav .head{
+	padding: 10px;
+}
+
+.navLinks li{
+	padding: 7px;
+	margin: 2px 0;
+	transition: all 0.32s;
+}
+
+.navLinks li a{
+	color: lightblue;
+	text-decoration: none;
+}
+
+
+
+.navLinks li:hover{
+	cursor: pointer;
+	background-color: #101010;
+}
+
+.main {
+	padding-left: 0;
+	transition: padding-left 0.5s;
+}
+
+@media (min-width: 768px) {
+	.sideNav {
+		width: 250px;
+	}
+
+	.main {
+		padding-left: 250px;
+	}
+}

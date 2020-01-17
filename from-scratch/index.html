@@ -5,50 +5,63 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Web Delivery</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="lib/bootstrap-4.4.1-dist/css/bootstrap.min.css">
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../lib/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
+	<div class="sideNav bg-dark">
+		<div>
+			<div class="head">
+				<h1>From Scratch</h1>
+				<p>This tool is used to remove all orphaned files when you have created a website from scratch</p>
+			</div>
+			<ul class="navLinks">
+				<li><a href="../css-sorter">CSS Sorter</a></li>
+				<li><a href="../from-scratch">Website from Scratch</a></li>
+				<li><a href="../update-only">Update files Only</a></li>
+			</ul>
+		</div>
+	</div>
 	<div class="main bg-dark">
-		<div class="filesView container">
-			<div class="row w-100">
+		<div class="container-fluid">
+			<div class="row filesView">
+			
 				<div class="leftFiles bg-dark col-12 col-md-6">
+					<div id="inDirectory" class="directory"></div>
 					<input type="file" id="files" webkitdirectory hidden multiple>
 					<button class="btn btn-primary" id="uploadFiles">Upload Folder</button>
 					<div id="leftStatus"></div>
 				</div>
+				
+				
 				<div class="rightFiles bg-dark col-12 col-md-6">
-					<div id="unused-results" class="bottom-panel vert-resizable top-resizer" style="display: none; box-sizing: border-box; height: 313px;">
-						<div class="vert-resizer"></div>
-						<div class="toolbar simple-toolbar-layout">
-							<div class="title"></div>
-							<a href="#" class="close">×</a>
-						</div>
-						<div class="table-container resizable-content" style="height: 283px;">
-							<table class="table table-striped table-condensed row-highlight unusedTable">
-								<tbody>
-								</tbody>
-							</table>
-						</div>
-					</div>
+					<div id="outDirectory" class="directory"></div>
 					<div id="dlSpinner" class="spinner-border m-2 text-white" role="status" style="display:none">
 						<span class="sr-only">Loading...</span>
 					</div>
 					<button id="downloadFiles" class="btn btn-success">Download</button>
 					<div id="rightStatus"></div>
 				</div>
+				
+				
 			</div>
 		</div>
 	</div>
 
 
-	<script src="lib/jquery-3.4.1-dist/jquery-3.4.1.min.js"></script>
-	<script src="lib/Stuk-jszip-3109282/dist/jszip.min.js"></script>
-	<script src="lib/FileSaver.js-master/dist/FileSaver.min.js"></script>
-	<script src="app.js"></script>
+	<script src="../lib/jquery-3.4.1-dist/jquery-3.4.1.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../lib/Stuk-jszip-3109282/dist/jszip.min.js"></script>
+	<script src="../lib/FileSaver.js-master/dist/FileSaver.min.js"></script>
+	<script src="js/app.js"></script>
 </body>
 
 </html>
+
+
+
+

@@ -28,14 +28,28 @@ body {
 	margin: 1px 0;
 	/*	background: black;*/
 }
-/*
 
-.root .files :hover,
-.root .folder:hover {
-	cursor: pointer;
-	background: grey;
+.folder {
+	display: none;
 }
-*/
+
+.active {
+	display: block;
+}
+
+.dir::before {
+	content: "\25B6";
+	color: black;
+	display: inline-block;
+	margin-right: 6px;
+}
+
+.dir.active::before {
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Safari */
+	transform: rotate(90deg);
+}
+
 .used{
 	color: green;
 }
@@ -45,6 +59,27 @@ body {
 .files:hover {
 	cursor: pointer;
 	background: lightgray;
+}
+.dir{
+	display: block;
+}
+.dir:hover{
+	cursor: pointer;
+	background: lightgray;
+}
+
+.root>li>.folder{
+	display: block;
+}
+
+.root>li>.dir::before{
+	content: "\25B6";
+	color: black;
+	display: inline-block;
+	margin-right: 6px;
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Safari */
+	transform: rotate(90deg);
 }
 
 .files:hover .folder {

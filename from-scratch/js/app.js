@@ -10,7 +10,6 @@ $(document).ready(function () {
 	});
 
 	$(files).change(function () {
-		console.log(files);
 		cleanCopy = [];
 		originalCopy = files[0].files;
 		removeUnused(originalCopy);
@@ -56,7 +55,7 @@ $(document).ready(function () {
 			current = output;
 			path = file.file.webkitRelativePath.split("/");
 			for (let segment of path) {
-				if (segment !== "") {
+				if (segment.trim() !== "") {
 					if (segment == path[path.length - 1]) {
 						if (file.used) {
 							$(current).append("<li class='files used'>" + segment + "</li>");
@@ -64,21 +63,27 @@ $(document).ready(function () {
 							$(current).append("<li class='files unused'>" + segment + "</li>");
 						}
 					} else {
-						let newChild = $("<li class='folder " + segment + "'><ul>" + segment + "</ul><li>");
-						if (!($(current).children("." + segment).length > 0)) {
-							$(current).append(newChild);
+						let newChild = $("<li><span class='dir'>" + segment + "</span><ul class='folder " + segment + "'></ul><li>");
+						console.log(newChild);
+						if (!($(current).find("ul." + segment).length > 0)) {
+							$(current).append(newChild[0]);
 						}
-						current = current.children("." + segment);
+						current = $(current).find("ul." + segment);
 					}
 				}
 			}
 		}
 		$(element).append(output);
+		$("#"+ elementID + " .dir").click(function () {
+			console.log("CLICKED");
+			this.parentElement.querySelector(".folder").classList.toggle("active");
+			this.classList.toggle("active");
+		});
 	}
 
 	function removeUnused(fileListResult) {
 		var ext_a = [".html", ".htm", ".css", ".php", ".js", ".aspx", ".ascx", ".master", ".cshtml", ".less", ".scss", ".sass", ".json", ".md"],
-			ext_b = [".png", ".jpg", ".jpeg", ".gif", ".svg", ".bmp", ".ico", ".js", ".css", ".json", ".otf", ".ttf", ".fnt"],
+			ext_b = [".png", ".jpg", ".jpeg", ".gif", ".svg", ".bmp", ".ico", ".js", ".css", ".json", ".otf", ".ttf", ".fnt", ".ttc"],
 			filesList = [],
 			unusedFilesList = [],
 			dot = 0,
@@ -121,8 +126,8 @@ $(document).ready(function () {
 
 					originalCopy = markUnusedFiles(originalCopy, cleanCopy);
 					displayFileTreeObj(originalCopy, "inDirectory");
-					
-					
+
+
 					$("#rightStatus").text("Removed " + unusedFilesListCopy.length + " unused files.");
 					displayFileTreeObj(cleanCopy, "outDirectory");
 				}
@@ -158,10 +163,10 @@ $(document).ready(function () {
 		$.each(filesToZip, function (i, file) {
 			var fileReader = new FileReader();
 			fileReader.onload = function () {
-				zip.file(file.webkitRelativePath, this.result);
+				zip.file(file.file.webkitRelativePath, this.result);
 				zippedCount++;
 			};
-			fileReader.readAsArrayBuffer(file);
+			fileReader.readAsArrayBuffer(file.file);
 		});
 
 		window.setInterval(function () {
@@ -182,5 +187,7 @@ $(document).ready(function () {
 			}
 		}, 100);
 	}
+
+
 
 });

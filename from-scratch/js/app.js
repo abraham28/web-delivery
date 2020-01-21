@@ -53,7 +53,7 @@ $(document).ready(function () {
 
 		for (let file of fileTree) {
 			current = output;
-			path = file.file.webkitRelativePath.split("/");
+			path = file.file.webkitRelativePath.replace(/ /g,"_").split("/");
 			for (let segment of path) {
 				if (segment.trim() !== "") {
 					if (segment == path[path.length - 1]) {

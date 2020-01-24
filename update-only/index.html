@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web Delivery</title>
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../lib/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<div class="sideNav bg-dark">
+		<div>
+			<div class="head">
+				<h1>Changes Update</h1>
+				<p>This tool is used to remove all orphaned files when you have created a website from scratch</p>
+			</div>
+			<ul class="navLinks">
+				<li><a href="../css-sorter">CSS Sorter</a></li>
+				<li><a href="../from-scratch">Website from Scratch</a></li>
+				<li><a href="../update-only">Update files Only</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="main bg-dark">
+		<div class="container-fluid">
+			<div class="row filesView">
+
+				<div class="oldFiles bg-dark col-12 col-md-4">
+					<div id="oldDirectory" class="directory"></div>
+					<input type="file" id="oldFiles" webkitdirectory hidden multiple>
+					<button class="btn btn-secondary" id="uploadOldFiles">Upload Old Folder</button>
+					<div id="oldStatus"></div>
+				</div>
+				
+				<div class="newFiles bg-dark col-12 col-md-4">
+					<div id="newDirectory" class="directory"></div>
+					<input type="file" id="newFiles" webkitdirectory hidden multiple>
+					<button class="btn btn-primary" id="uploadNewFiles">Upload New Folder</button>
+					<div id="newStatus"></div>
+				</div>
+				
+				<div class="cleanFiles bg-dark col-12 col-md-4">
+					<div id="cleanDirectory" class="directory"></div>
+					<div id="dlSpinner" class="spinner-border m-2 text-white" role="status" style="display:none">
+						<span class="sr-only">Loading...</span>
+					</div>
+					<button id="downloadBtn" class="btn btn-success">Download</button>
+					<div id="cleanStatus"></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+
+	<script src="../lib/jquery-3.4.1-dist/jquery-3.4.1.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../lib/Stuk-jszip-3109282/dist/jszip.min.js"></script>
+	<script src="../lib/FileSaver.js-master/dist/FileSaver.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+
+</html>
+
+
+
+

@@ -1,0 +1,12 @@
+#result {
+	white-space: pre-line;
+	color: white;
+	align-self: flex-start;
+}
+
+.sorter{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 15px;
+}

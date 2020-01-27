@@ -2,44 +2,61 @@
 <html>
 
 <head>
-    <title>CSS Ordering Fish</title>
-    <meta charset="UTF-8">
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <style>
-        #result {
-            white-space: pre-line;
-        }
-
-    </style>
+	<title>CSS Ordering Fish</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../lib/bootstrap-4.4.1-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/common.css">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <textarea name="css" id="css" cols="30" rows="10" placeholder="Enter your CSS HERE">
+
+	<div class="sideNav bg-dark">
+		<div>
+			<div class="head">
+				<h1>Changes Update</h1>
+				<p>This tool is used to remove all orphaned files when you have created a website from scratch</p>
+			</div>
+			<ul class="navLinks">
+				<li><a href="../css-sorter">CSS Sorter</a></li>
+				<li><a href="../from-scratch">Website from Scratch</a></li>
+				<li><a href="../update-only">Update files Only</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="main bg-dark">
+		<div class="sorter container-fluid">
+			<textarea class="form-control" name="css" id="css" cols="30" rows="10" placeholder="Enter your CSS HERE">
 .sec01Btnbg {
-    margin-top: 1px;
-    margin-right: 2px;
-    margin-left: 1px;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    padding-top: 10px;
-    height: 88px;
-    width: 870px;
-    background: url(../images/sec01BtnBg.png) center no-repeat;
-    text-align: center;
+margin-top: 1px;
+margin-right: 2px;
+margin-left: 1px;
+margin-bottom: 0;
+padding-bottom: 0;
+padding-top: 10px;
+height: 88px;
+width: 870px;
+background: url(../images/sec01BtnBg.png) center no-repeat;
+text-align: center;
 }
 
 .section01Blk02 {
-    margin-bottom: 20px;
-    text-align: center;
+margin-bottom: 20px;
+text-align: center;
 }</textarea>
-    <button id="start">Start Ordering</button>
-    <textarea name="result" id="resultz" cols="30" rows="10" placeholder="Copy Results From here"></textarea>
-    <div id="result"></div>
+			<button class="btn btn-success m-2" id="start">Start Ordering</button>
+			<textarea class="form-control" name="result" id="resultz" cols="30" rows="10" placeholder="Copy Results From here"></textarea>
+			<div id="result"></div>
+		</div>
+	</div>
 
-    <script src="../lib/jquery-3.4.1-dist/jquery-3.4.1.min.js"></script>
-    <script src="js/abra-sorter.js"></script>
-    <script src="js/app.js"></script>
+	<script src="../lib/jquery-3.4.1-dist/jquery-3.4.1.min.js"></script>
+	<script src="js/abra-sorter.js"></script>
+	<script src="js/app.js"></script>
 </body>
 
 </html>

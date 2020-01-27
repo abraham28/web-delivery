@@ -13,6 +13,7 @@
 	height: 100%;
 	overflow-x: hidden;
 	border-right: 1px solid white;
+	color: white;
 }
 
 .sideNav .head{

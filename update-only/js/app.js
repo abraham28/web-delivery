@@ -71,7 +71,6 @@ function FileTree(files) {
 			});
 		}
 	}
-
 	return this;
 }
 
@@ -98,7 +97,10 @@ function Abra() {
 						var changed = false;
 						var doc2 = this.result;
 						changed = doc !== doc2;
-						if (changed) cleanFiles.files.push(newFiles.files[i]);
+						if (changed) {
+							newFiles.files[i].used = true;
+							cleanFiles.files.push(newFiles.files[i]);
+						};
 
 						if (i + 1 === newFiles.files.length && j + 1 === oldFiles.files.length) {
 							if (typeof callback == "function") callback(cleanFiles);
@@ -106,12 +108,17 @@ function Abra() {
 					}
 					fileReader2.readAsText(oldFiles.files[j].file);
 				}
+				var found = false;
 				for (var j = 0; j < oldFiles.files.length; j++) {
-					if (newFiles.files[i].webkitRelativePath == oldFiles.files[j].webkitRelativePath) {
+					if (newFiles.files[i].file.webkitRelativePath == oldFiles.files[j].file.webkitRelativePath) {
 						checkingFile2(j);
-						cnt++;
-						console.log(cnt);
+						found = true;
+						break;
 					}
+				}
+				if (!found) {
+					newFiles.files[i].used = true;
+					cleanFiles.files.push(newFiles.files[i]);
 				}
 			};
 			fileReader.readAsText(newFiles.files[i].file);
@@ -152,7 +159,11 @@ $(document).ready(function () {
 		oldFiles.displayInDOM(oldDirectory[0]);
 		if (typeof oldFiles !== "undefined" &&
 			typeof newFiles !== "undefined")
-			abra.compareUpdateFiles(oldFiles, newFiles);
+			abra.compareUpdateFiles(oldFiles, newFiles, function (result) {
+				cleanFiles = result;
+				cleanFiles.displayInDOM(cleanDirectory[0]);
+				newFiles.displayInDOM(newDirectory[0]);
+			});
 	});
 
 	$(newFilesInput).change(function () {
@@ -161,13 +172,55 @@ $(document).ready(function () {
 		if (typeof oldFiles !== "undefined" &&
 			typeof newFiles !== "undefined")
 			abra.compareUpdateFiles(oldFiles, newFiles, function (result) {
-				console.log(result);
+				cleanFiles = result;
+				cleanFiles.displayInDOM(cleanDirectory[0]);
+				newFiles.displayInDOM(newDirectory[0]);
 			});
 	});
 
 	$(downloadBtn).click(function () {
-
+		cleanDownload();
 	});
+
+
+
+	function cleanDownload() {
+		if(typeof cleanFiles == "undefined" || cleanFiles.files.length < 1) return;
+		$("#dlSpinner").show();
+		
+		var filesToZip = cleanFiles.files,
+			numOfFiles = filesToZip.length,
+			zippedCount = 0,
+			zip = new JSZip();
+
+		$.each(filesToZip, function (i, file) {
+			var fileReader = new FileReader();
+			fileReader.onload = function () {
+				zip.file(file.file.webkitRelativePath, this.result);
+				zippedCount++;
+			};
+			fileReader.readAsArrayBuffer(file.file);
+		});
+
+		window.setInterval(function () {
+			if (numOfFiles == 0) return;
+			$("#rightStatus").text("Zipped " + zippedCount + " of " + numOfFiles);
+			if (numOfFiles == zippedCount) {
+				$("#rightStatus").text("Zipped " + zippedCount + " of " + numOfFiles + "  Please wait...");
+				numOfFiles = 0;
+				window.clearInterval(this);
+				zip.generateAsync({
+						type: "blob"
+					})
+					.then(function (content) {
+						saveAs(content, "delivery.zip");
+						$("#rightStatus").text("Zipped Successfully!");
+						$("#dlSpinner").hide();
+					});
+			}
+		}, 100);
+	}
+
 
 
 

@@ -1,0 +1,104 @@
+body {
+	color: white;
+}
+
+.filesView {
+	min-height: 100vh;
+}
+
+.oldFiles {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border: 1px solid gray;
+}
+
+.newFiles {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border: 1px solid gray;
+}
+
+.cleanFiles {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	border: 1px solid gray;
+}
+
+.directory .root li,
+.directory .root > ul ul {
+	padding: 1px 0 1px 30px;
+	margin: 1px 0;
+}
+
+.folder {
+	display: none;
+}
+
+.active {
+	display: block;
+}
+
+.dir::before {
+	content: "\25B6";
+	color: black;
+	display: inline-block;
+	margin-right: 6px;
+}
+
+.dir.active::before {
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Safari */
+	transform: rotate(90deg);
+}
+
+.used{
+	color: green;
+}
+.unused{
+	color:red;
+}
+.files:hover {
+	cursor: pointer;
+	background: lightgray;
+}
+.dir{
+	display: block;
+}
+.dir:hover{
+	cursor: pointer;
+	background: lightgray;
+}
+
+.root>li>.folder{
+	display: block;
+}
+
+.root>li>.dir::before{
+	content: "\25B6";
+	color: black;
+	display: inline-block;
+	margin-right: 6px;
+	-ms-transform: rotate(90deg); /* IE 9 */
+	-webkit-transform: rotate(90deg); /* Safari */
+	transform: rotate(90deg);
+}
+
+.files:hover .folder {
+	background-color: white;
+	font-weight: normal;
+}
+
+.directory {
+	align-self: flex-start;
+	width: 100%;
+	max-height: 500px;
+	overflow-y: scroll;
+	background: whitesmoke;
+	color: black;
+}

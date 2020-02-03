@@ -94,6 +94,17 @@ function Abra() {
 			}
 			if(isModified) {
 				newFiles.files[i].used = true;
+				var file = newFiles.files[i];
+				var oldFile = oldFiles.files.find(oldFile =>
+												  oldFile.file.webkitRelativePath.substring(oldFile.file.webkitRelativePath.indexOf("/"))
+												  ==
+												  file.file.webkitRelativePath.substring(file.file.webkitRelativePath.indexOf("/")));
+				
+				var stringtoappend = "no Old File";
+				if(typeof oldFile != "undefined"){
+					stringtoappend = oldFile.file.lastModifiedDate;
+				}
+				console.log(file.file.webkitRelativePath + " \nnew:" + file.file.lastModifiedDate + " \nold: " + stringtoappend);
 				cleanFiles.files.push(newFiles.files[i]);
 			}
 		}

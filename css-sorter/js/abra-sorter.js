@@ -50,6 +50,7 @@ var order = [
     "border-image-width",
     "border-image-outset",
     "border-image-repeat",
+    "border-radius",
     "border-collapse",
     "border-spacing",
     "background",
@@ -129,15 +130,18 @@ function jsonToCss(json) {
 function compareProperties(a, b) {
     var indexA = order.indexOf(a.property);
     var indexB = order.indexOf(b.property);
-    if (indexA < indexB) {
-        return -1;
-    } else if (indexA > indexB) {
-        return 1;
-    } else {
+    const compare = (a,b)=>{
+        if(indexA == -1) return 1;
+        if(indexB == -1) return -1;
+        if(indexA > indexB) return 1;
+        if(indexA < indexB) return -1;
         return 0;
     }
-
-    return indexA > indexB;
+    console.log("compare",a.property,b.property);
+    console.log(indexA,a.property);
+    console.log(indexB,b.property);
+    console.log("result",compare(a,b));
+    return compare(a,b);
 }
 
 function removeDuplicate(properties) {

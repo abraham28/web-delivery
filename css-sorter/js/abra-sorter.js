@@ -144,10 +144,9 @@ function sortProperties(properties) {
     return properties;
 }
 
-/** Shorthand CSS */
-// function matchProperty(property) {
-//     return this == property.property;
-// }
+function matchProperty(property) {
+    return this == property.property;
+}
 
 // function shortHandCSS(properties) {
 //     for (var shortHand of shortHands) {
